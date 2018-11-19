@@ -21,6 +21,10 @@
     "postinstall": ""
   },
   "dependencies": {
+    "@handsontable/vue": "^3.0.0",
+    "encoding-japanese": "^1.0.29",
+    "handsontable": "^6.2.0",
+    "papaparse": "^4.6.2",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6"
   },
