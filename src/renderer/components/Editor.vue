@@ -63,6 +63,13 @@ export default {
     }
   },
 
+  watch: {
+    'file.encode': function(newVal) {
+      let table = this.$refs.hotTableComponent.hotInstance
+      table.loadData(this.parseCSV())
+    }
+  },
+
   components: { HotTable },
 
   mounted() {
