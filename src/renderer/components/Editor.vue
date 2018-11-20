@@ -23,6 +23,17 @@ export default {
       config: {
         data: Handsontable.helper.createSpreadsheetData(6, 6),
         colHeaders: true
+      },
+
+      encoding: {
+        'UTF8':  'UTF-8',
+        'EUCJP': 'EUC-JP',
+        'SJIS':  'Shift_JIS'
+      },
+      newline: {
+        CRLF: 'CRLF',
+        CR:   'CR',
+        LF:   'LF'
       }
     }
   },
