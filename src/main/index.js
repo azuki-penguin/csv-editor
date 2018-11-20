@@ -1,4 +1,4 @@
-import { app, BrowserWindow, dialog, ipcMain } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain, Menu } from 'electron'
 import fs from 'fs'
 
 /**
@@ -40,6 +40,39 @@ function createWindow () {
   })
 
   mainWindow.loadURL(winURL)
+  Menu.setApplicationMenu(Menu.buildFromTemplate([
+    {
+      label: 'csv-editor',
+      submenu: [
+        {
+          label: 'Quit',
+          accelerator: 'CmdOrCtrl+Q',
+          click() { app.quit() }
+        }
+      ]
+    },
+
+    {
+      label: 'File',
+      submenu: [
+        {
+          label: 'Open',
+          accelerator: 'CmdOrCtrl+O',
+          click() { openFile(mainWindow) }
+        },
+
+        {
+          label: 'Close',
+          accelerator: 'CmdOrCtrl+W',
+          click() {
+            if (mainWindow != null) {
+              mainWindow.close()
+            }
+          }
+        }
+      ]
+    }
+  ]))
 
   mainWindow.on('closed', () => {
     mainWindow = null
