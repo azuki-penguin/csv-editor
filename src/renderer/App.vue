@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <landing-page></landing-page>
+    <Editor/>
   </div>
 </template>
 
 <script>
-  import LandingPage from '@/components/LandingPage'
+  import Editor from '@/components/Editor'
 
   export default {
     name: 'csv-editor',
     components: {
-      LandingPage
+      Editor
     }
   }
 </script>
