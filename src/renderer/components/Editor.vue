@@ -21,6 +21,7 @@ import Papa from 'papaparse'
 import Handsontable from 'handsontable'
 import { HotTable } from '@handsontable/vue'
 import { ipcRenderer } from 'electron'
+import NewLine from '@/utilities/NewLine'
 
 export default {
   data() {
@@ -60,6 +61,13 @@ export default {
       })
 
       return Papa.parse(this.file.text.trim()).data
+    },
+
+    unparseCSV() {
+      let table = this.$refs.hotTableComponent.hotInstance
+      return Papa.unparse(table.getData(), {
+        newline: NewLine.decode(this.file.newline)
+      })
     }
   },
 
