@@ -1,4 +1,5 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain } from 'electron'
+import fs from 'fs'
 
 /**
  * Set `__static` path to static files in production
@@ -12,6 +13,21 @@ let mainWindow
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
+
+function openFile(win) {
+  dialog.showOpenDialog(win, {
+    properties: [ 'openFile' ]
+  }, files => {
+    if (files[0]) {
+      let file_info = {
+        bytes: fs.readFileSync(files[0]),
+        path:  files[0]
+      }
+
+      win.webContents.send('send-file-contents', file_info)
+    }
+  })
+}
 
 function createWindow () {
   /**
