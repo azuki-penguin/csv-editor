@@ -51,6 +51,18 @@ export default {
     }
   },
 
+  methods: {
+    parseCSV() {
+      this.file.text = Encoder.convert(this.file.bytes, {
+        from: this.file.encode,
+        to:   'UNICODE',
+        type: 'string'
+      })
+
+      return Papa.parse(this.file.text.trim()).data
+    }
+  },
+
   components: { HotTable },
 
   mounted() {
@@ -58,14 +70,9 @@ export default {
       this.file.bytes  = file_info.bytes
       this.file.path   = file_info.path
       this.file.encode = Encoder.detect(this.file.bytes)
-      this.file.text   = Encoder.convert(this.file.bytes, {
-        from: this.file.encode,
-        to:   'UNICODE',
-        type: 'string'
-      })
 
       let table = this.$refs.hotTableComponent.hotInstance
-      table.loadData(Papa.parse(this.file.text.trim()).data)
+      table.loadData(this.parseCSV())
     })
   }
 }
