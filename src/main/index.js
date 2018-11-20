@@ -62,6 +62,12 @@ function createWindow () {
         },
 
         {
+          label: 'Save',
+          accelerator: 'CmdOrCtrl+S',
+          click() { mainWindow.webContents.send('save-file') }
+        },
+
+        {
           label: 'Close',
           accelerator: 'CmdOrCtrl+W',
           click() {
