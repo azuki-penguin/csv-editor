@@ -1,5 +1,18 @@
 <template>
-  <HotTable :settings="config" ref="hotTableComponent"/>
+  <div>
+    <select v-model="file.encode">
+      <option v-for="(value, key) in encoding" :value="key">
+        {{ value }}
+      </option>
+    </select>
+    <select v-model="file.newline">
+      <option v-for="(value, key) in newline" :value="key">
+        {{ value }}
+      </option>
+    </select>
+
+    <HotTable :settings="config" ref="hotTableComponent"/>
+  </div>
 </template>
 
 <script>
@@ -17,7 +30,7 @@ export default {
         text:    null,
         path:    null,
         encode:  'UTF8',
-        newline: 'NL'
+        newline: 'LF'
       },
 
       config: {
