@@ -93,7 +93,7 @@ export default {
     ipcRenderer.on('save-file', (e, arg) => {
       this.file.text = this.unparseCSV()
       this.file.bytes = new Uint8Array(
-        Encoder.convert(this.file.bytes, {
+        Encoder.convert(Encoder.stringToCode(this.file.text), {
           from: 'UNICODE',
           to:   this.file.encode,
           type: 'arraybuffer'
