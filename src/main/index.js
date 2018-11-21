@@ -64,7 +64,13 @@ function createWindow () {
         {
           label: 'Save',
           accelerator: 'CmdOrCtrl+S',
-          click() { mainWindow.webContents.send('save-file') }
+          click() {
+            mainWindow.webContents.send('save-file')
+            ipcMain.on('save-data', (e, file) => {
+              let writer = fs.createWriteStream(file.path)
+              writer.write(file.bytes)
+            })
+          }
         },
 
         {
