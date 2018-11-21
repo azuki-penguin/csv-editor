@@ -89,6 +89,20 @@ export default {
       let table = this.$refs.hotTableComponent.hotInstance
       table.loadData(this.parseCSV())
     })
+
+    ipcRenderer.on('save-file', (e, arg) => {
+      this.file.text = this.unparseCSV()
+      this.file.bytes = new Uint8Array(
+        Encoder.convert(this.file.bytes, {
+          from: 'UNICODE',
+          to:   this.file.encode,
+          type: 'arraybuffer'
+        })
+      )
+      console.dir(this.file)
+
+      ipcRenderer.send('save-data', this.file)
+    })
   }
 }
 </script>
