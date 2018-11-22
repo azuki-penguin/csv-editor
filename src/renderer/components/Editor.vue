@@ -39,6 +39,7 @@ export default {
 
       config: {
         data: Handsontable.helper.createSpreadsheetData(6, 6),
+        contextMenu: true,
         colHeaders: true
       },
 
