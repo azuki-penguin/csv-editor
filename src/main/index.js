@@ -49,6 +49,11 @@ function createWindow () {
       label: 'csv-editor',
       submenu: [
         {
+          label: 'Debug',
+          accelerator: 'CmdOrCtrl+Alt+I',
+          click() { mainWindow.openDevTools() }
+        },
+        {
           label: 'Quit',
           accelerator: 'CmdOrCtrl+Q',
           click() { app.quit() }
