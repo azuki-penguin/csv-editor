@@ -102,7 +102,6 @@ export default {
           type: 'arraybuffer'
         })
       )
-      console.dir(this.file)
 
       ipcRenderer.send('save-data', this.file)
     })
