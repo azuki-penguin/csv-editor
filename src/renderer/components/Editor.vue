@@ -88,6 +88,7 @@ export default {
       this.file.bytes  = file_info.bytes
       this.file.path   = file_info.path
       this.file.encode = Encoder.detect(this.file.bytes)
+      this.file.newline = NewLine.encode(this.file.bytes)
 
       let table = this.$refs.hotTableComponent.hotInstance
       table.loadData(this.parseCSV())
