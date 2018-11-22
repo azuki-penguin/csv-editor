@@ -94,7 +94,7 @@ export default {
       table.loadData(this.parseCSV())
     })
 
-    ipcRenderer.on('save-file', (e, arg) => {
+    ipcRenderer.on('unparse-table', (e, arg) => {
       this.file.text = this.unparseCSV()
       this.file.bytes = new Uint8Array(
         Encoder.convert(Encoder.stringToCode(this.file.text), {

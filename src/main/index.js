@@ -73,7 +73,7 @@ function createWindow () {
               return
             }
 
-            mainWindow.webContents.send('save-file')
+            mainWindow.webContents.send('unparse-table')
             ipcMain.on('save-data', (e, file) => {
               let writer = fs.createWriteStream(file.path)
               writer.write(file.bytes)
