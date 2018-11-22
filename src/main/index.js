@@ -14,17 +14,21 @@ const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
 
-function openFile(win) {
-  dialog.showOpenDialog(win, {
+function openFile() {
+  if (mainWindow === null) {
+    createWindow()
+  }
+
+  dialog.showOpenDialog(mainWindow, {
     properties: [ 'openFile' ]
   }, files => {
-    if (files[0]) {
+    if (files) {
       let file_info = {
         bytes: fs.readFileSync(files[0]),
         path:  files[0]
       }
 
-      win.webContents.send('send-file-contents', file_info)
+      mainWindow.webContents.send('send-file-contents', file_info)
     }
   })
 }
@@ -58,7 +62,7 @@ function createWindow () {
         {
           label: 'Open',
           accelerator: 'CmdOrCtrl+O',
-          click() { openFile(mainWindow) }
+          click() { openFile() }
         },
 
         {
