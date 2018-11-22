@@ -69,6 +69,10 @@ function createWindow () {
           label: 'Save',
           accelerator: 'CmdOrCtrl+S',
           click() {
+            if (mainWindow === null) {
+              return
+            }
+
             mainWindow.webContents.send('save-file')
             ipcMain.on('save-data', (e, file) => {
               let writer = fs.createWriteStream(file.path)
