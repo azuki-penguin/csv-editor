@@ -1,11 +1,14 @@
 <template>
   <div>
-    <select v-model="file.encode">
+    <label for="encoding">Encode: </label>
+    <select id="encoding" v-model="file.encode">
       <option v-for="(value, key) in encoding" :value="key">
         {{ value }}
       </option>
     </select>
-    <select v-model="file.newline">
+
+    <label for="newline">Line Ends: </label>
+    <select id="newline" v-model="file.newline">
       <option v-for="(value, key) in newline" :value="key">
         {{ value }}
       </option>
