@@ -104,8 +104,13 @@ function createWindow () {
         {
           label: 'Copy',
           accelerator: 'CmdOrCtrl+C',
-          role: 'copy;
+          role: 'copy'
         },
+        {
+          label: 'Paste',
+          accelerator: 'CmdOrCtrl+V',
+          role: 'paste'
+        }
       ]
     }
   ]))
