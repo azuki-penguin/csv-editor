@@ -1,4 +1,4 @@
-import { app, BrowserWindow, dialog, ipcMain, Menu } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain, Menu, clipboard } from 'electron'
 import fs from 'fs'
 
 /**
@@ -104,6 +104,7 @@ function createWindow () {
         {
           label: 'Copy',
           accelerator: 'CmdOrCtrl+C',
+          role: 'copy;
         },
       ]
     }
