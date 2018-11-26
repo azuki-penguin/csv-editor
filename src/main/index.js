@@ -96,6 +96,16 @@ function createWindow () {
           }
         }
       ]
+    },
+
+    {
+      label: 'Edit',
+      submenu: [
+        {
+          label: 'Copy',
+          accelerator: 'CmdOrCtrl+C',
+        },
+      ]
     }
   ]))
 
