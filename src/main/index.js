@@ -102,6 +102,11 @@ function createWindow () {
       label: 'Edit',
       submenu: [
         {
+          label: 'Cut',
+          accelerator: 'CmdOrCtrl+X',
+          role: 'cut'
+        },
+        {
           label: 'Copy',
           accelerator: 'CmdOrCtrl+C',
           role: 'copy'
