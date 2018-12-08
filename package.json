@@ -1,7 +1,7 @@
 {
   "name": "csv-editor",
   "productName": "csv-editor",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "azuki <azukibeans.5kilo@gmail.com>",
   "description": "Tiny CSV Editor",
   "license": null,
